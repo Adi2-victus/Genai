@@ -203,4 +203,5 @@ export async function runAgent(directoryPath){
         }
     }
 }
-
+const directory=process.argv[2]|| '.';
+await runAgent(directory);
