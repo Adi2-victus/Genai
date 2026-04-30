@@ -23,6 +23,14 @@ async function indexing(params) {
    const chunkedDocs=await textSplitter.splitDocuments(rawDocs);
     console.log(chunkedDocs);
 
+    //embedding create karna->chunk ke corresponding vector chahiye
+    const embeddings=new GoogleGenerativeAIEmbeddings({
+        apiKey:process.env.GEMINI_API_KEY,
+        model: "text-embedding-004",
+    });
+    const embeddedDocs=await embeddings.embedDocuments(chunkedDocs.map((doc)=>doc.pageContent));
+    console.log(embeddedDocs);
+
    
 }
 indexing();
