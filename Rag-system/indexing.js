@@ -1,0 +1,22 @@
+
+import * as dotenv from 'dotenv';
+dotenv.config();
+
+import {PDFLoader} from "@langchain/community/document_loaders/fs/pdf";
+import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
+import {GoogleGenerativeAIEmbeddings} from "@langchain/google-genai";
+import {Pinecone} from "@pinecone-database/pinecone";
+import {PineconeStore} from "@langchain/pinecone"
+
+async function indexing(params) {
+    //pdf file ko load karriye
+    const PDF_PATH="./CS 2.pdf";
+    const pdfLoader=new PDFLoader(PDF_PATH);
+   const rawDocs=await pdfLoader.load();
+
+   console.log(rawDocs);
+
+
+   
+}
+indexing();
