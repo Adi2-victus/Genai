@@ -15,7 +15,13 @@ async function indexing(params) {
    const rawDocs=await pdfLoader.load();
 
    console.log(rawDocs);
-
+   //chunking create karna
+   const textSplitter=new RecursiveCharacterTextSplitter({                                    
+    chunkSize:1000,
+    chunkOverlap:200,  //matlab 1000 character ke baad 200 character overlap hoga
+   });  
+   const chunkedDocs=await textSplitter.splitDocuments(rawDocs);
+    console.log(chunkedDocs);
 
    
 }
